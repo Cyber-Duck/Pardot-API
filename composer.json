@@ -1,0 +1,31 @@
+{
+    "name": "Cyber-Duck/Pardot-API",
+    "description": "PHP package to interact with the Pardot API",
+    "homepage": "https://github.com/Cyber-Duck/Pardot-API",
+    "keywords": [
+        "php",
+        "pardot"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Mc Cormack",
+            "email": "andy@cyber-duck.co.uk"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/Cyber-Duck/Pardot-API"
+    },
+    "extra": {
+        "installer-name": "pardot-api"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "6.3.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "prefer-stable": true
+}
