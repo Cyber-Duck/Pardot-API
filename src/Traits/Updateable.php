@@ -1,5 +1,7 @@
 <?php
 
+namespace CyberDuck\Pardot\Traits;
+
 use stdClass;
 
 /**
@@ -29,6 +31,6 @@ trait Updateable
      */
     public function update(int $id, array $data):? stdClass
     {
-        return $this->setOperator(sprintf('update/id/%s', $id))->setData($data)->query($this->object);
+        return $this->setOperator(sprintf('update/id/%s', $id))->setData($data)->request($this->object);
     }
 }

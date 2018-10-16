@@ -34,6 +34,6 @@ class AccountsQuery extends Query
      */
     public function read():? stdClass
     {
-        return $this->setOperator('read')->query($this->object);
+        return $this->setOperator('read')->request($this->object);
     }
 }

@@ -130,7 +130,7 @@ class Query
      * @return string|null
      * @throws Exception
      */
-    protected function query(string $property):? string
+    protected function request(string $property):? string
     {
         if(!$this->api->getAuthenticator()->isAuthenticated()) {
             $this->api->getAuthenticator()->doAuthentication();

@@ -1,5 +1,7 @@
 <?php
 
+namespace CyberDuck\Pardot\Traits;
+
 use stdClass;
 
 /**
@@ -31,6 +33,6 @@ trait Createable
      */
     public function create(array $data):? stdClass
     {
-        return $this->setOperator('create')->setData($data)->query($this->object);
+        return $this->setOperator('create')->setData($data)->request($this->object);
     }
 }

@@ -1,9 +1,11 @@
 <?php
 
+namespace CyberDuck\Pardot\Traits;
+
 /**
  * Trait to allow the querying of specific object results in a generic way
  * 
- * Implementing classes should have 2 array properties
+ * Implementing classes should implement QueryObject
  * 
  * - $queryCriteria
  * - $queryNavigation
@@ -31,6 +33,6 @@ trait Queryable
      */
     public function query(array $criteria):? array
     {
-        return $this->setOperator('query')->setData($criteria)->query('result');
+        return $this->setOperator('query')->setData($criteria)->request('result');
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace CyberDuck\Pardot\Traits;
+
 use stdClass;
 
 /**
@@ -28,6 +30,6 @@ trait Readable
      */
     public function read(int $id):? stdClass
     {
-        return $this->setOperator(sprintf('read/id/%s', $id))->query($this->object);
+        return $this->setOperator(sprintf('read/id/%s', $id))->request($this->object);
     }
 }
