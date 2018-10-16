@@ -121,6 +121,7 @@ class PardotAuthenticator implements PardotAuthenticatorInterface
      * Performs the login authentication request to return and set the API key 
      *
      * @return void
+     * @throws Exception
      */
     public function doAuthentication(): void
     {
