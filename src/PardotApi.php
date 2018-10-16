@@ -76,7 +76,7 @@ class PardotApi implements PardotApiInterface
      * @var array
      */
     protected $signatures = [
-        'accounts'           => AccountsQuery::class,
+        'account'            => AccountsQuery::class,
         'campaigns'          => CampaignsQuery::class,
         'customFields'       => CustomFieldsQuery::class,
         'customRedirects'    => CustomRedirectsQuery::class,
@@ -96,7 +96,7 @@ class PardotApi implements PardotApiInterface
         'tags'               => TagsQuery::class,
         'users'              => UsersQuery::class,
         //'visitorActivities'  => VisitorActivitiesQuery::class,
-        //'visitors'           => VisitorsQuery::class,
+        'visitors'           => VisitorsQuery::class,
         'visits'             => VisitsQuery::class,
     ];
     
