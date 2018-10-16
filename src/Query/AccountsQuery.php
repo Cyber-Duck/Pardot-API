@@ -2,6 +2,8 @@
 
 namespace CyberDuck\Pardot\Query;
 
+use stdClass;
+
 /**
  * Account object representation
  * 
@@ -30,7 +32,7 @@ class AccountsQuery extends Query
      * 
      * required: user_key, api_key
      */
-    public function read():? string
+    public function read():? stdClass
     {
         return $this->setOperator('read')->query($this->object);
     }
