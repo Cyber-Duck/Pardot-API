@@ -4,14 +4,12 @@ namespace CyberDuck\Pardot\Query;
 
 use CyberDuck\Pardot\Contract\QueryObject;
 use CyberDuck\Pardot\Traits\CanQuery;
-use CyberDuck\Pardot\Traits\CanRead;
-use CyberDuck\Pardot\Validator\DateValidator;
 use CyberDuck\Pardot\Validator\FixedValuesValidator;
 use CyberDuck\Pardot\Validator\PositiveIntValidator;
 use CyberDuck\Pardot\Validator\SortOrderValidator;
 
 /**
- * Lifecycyle Histories object representation
+ * Lifecycyle Stages object representation
  * 
  * @category   PardotApi
  * @package    PardotApi
@@ -22,16 +20,16 @@ use CyberDuck\Pardot\Validator\SortOrderValidator;
  * @link       https://github.com/Cyber-Duck/Pardot-API
  * @since      1.0.0
  */
-class LifecycleHistoriesQuery extends Query implements QueryObject
+class LifecycleStagesQuery extends Query implements QueryObject
 {
-    use CanQuery, CanRead;
+    use CanQuery;
 
     /**
      * Object name
      *
      * @var string
      */
-    protected $object = 'lifecycleHistory';
+    protected $object = 'lifecycleStage';
 
     /**
      * Returns an array of allowed query criteria and validators for the values
@@ -41,8 +39,6 @@ class LifecycleHistoriesQuery extends Query implements QueryObject
     public function getQueryCriteria(): array
     {
         return [
-            'created_after'   => new DateValidator,
-            'created_before'  => new DateValidator,
             'id_greater_than' => new PositiveIntValidator,
             'id_less_than'    => new PositiveIntValidator
         ];
@@ -58,8 +54,9 @@ class LifecycleHistoriesQuery extends Query implements QueryObject
         return [
             'limit'      => new PositiveIntValidator,
             'offset'     => new PositiveIntValidator,
-            'sort_by'    => new FixedValuesValidator('created_at', 'id'),
+            'sort_by'    => new FixedValuesValidator('position', 'id'),
             'sort_order' => new SortOrderValidator
         ];
     }
+
 }
