@@ -7,7 +7,7 @@ use CyberDuck\Pardot\Contract\PardotAuthenticator as PardotAuthenticatorInterfac
 use CyberDuck\Pardot\Query\AccountsQuery;
 
 /**
- * Object interface for the pardot API
+ * PHP Wrapper for the pardot API
  * 
  * API access methods return object representations on the Pardot API object
  * / operator endpoints
