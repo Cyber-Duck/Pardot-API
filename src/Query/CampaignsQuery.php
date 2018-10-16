@@ -2,6 +2,17 @@
 
 namespace CyberDuck\Pardot\Query;
 
+use CyberDuck\Pardot\Contract\QueryObject;
+use CyberDuck\Pardot\Traits\Createable;
+use CyberDuck\Pardot\Traits\Queryable;
+use CyberDuck\Pardot\Traits\Readable;
+use CyberDuck\Pardot\Traits\Updateable;
+use CyberDuck\Pardot\Validator\DateValidator;
+use CyberDuck\Pardot\Validator\FixedValuesValidator;
+use CyberDuck\Pardot\Validator\PositiveIntValidator;
+use CyberDuck\Pardot\Validator\SortOrderValidator;
+use CyberDuck\Pardot\Validator\StringValidator;
+
 /**
  * Campaigns object representation
  * 
@@ -14,7 +25,7 @@ namespace CyberDuck\Pardot\Query;
  * @link       https://github.com/Cyber-Duck/Pardot-API
  * @since      1.0.0
  */
-class CampaignsQuery extends Query
+class CampaignsQuery extends Query implements QueryObject
 {
     use Queryable, Createable, Readable, Updateable;
 
@@ -26,42 +37,35 @@ class CampaignsQuery extends Query
     protected $object = 'campaign';
 
     /**
-     * Array of valid query criteria
-     * 
-     * created_after - today, yesterday, last_7_days, this_month, last_month, <custom_time>
-     * created_before - today, yesterday, last_7_days, this_month, last_month, <custom_time>
-     * id_greater_than - <any_positive_integer>
-     * id_less_than - <any_positive_integer>
-     * name - <any string>
-     * updated_before - today, yesterday, last_7_days, this_month, last_month, <custom_time>
-     * updated_after - today, yesterday, last_7_days, this_month, last_month, <custom_time>
+     * Returns an array of allowed query criteria and validators for the values
      *
-     * @var array
+     * @return array
      */
-    protected $queryCriteria = [
-        'created_after',
-        'created_before',
-        'id_greater_than',
-        'id_less_than',
-        'name',
-        'updated_before',
-        'updated_after'
-    ];
+    public function getQueryCriteria(): array
+    {
+        return [
+            'name'            => new StringValidator,
+            'created_after'   => new DateValidator,
+            'created_before'  => new DateValidator,
+            'id_greater_than' => new PositiveIntValidator,
+            'id_less_than'    => new PositiveIntValidator,
+            'updated_before'  => new DateValidator,
+            'updated_after'   => new DateValidator
+        ];
+    } 
 
     /**
-     * Array of valid naviation values
-     * 
-     * limit - <any_positive_integer>
-     * offset - <any_positive_integer>
-     * sort_by - created_at, id, name, updated_at, cost
-     * sort_order - ascending, descending
+     * Returns an array of allowed query navigation params and validators for the values
      *
-     * @var array
+     * @return array
      */
-    protected $queryNavigation = [
-        'limit',
-        'offset',
-        'sort_by',
-        'sort_order'
-    ];
+    public function getQueryNavigation(): array
+    {
+        return [
+            'limit'      => new PositiveIntValidator,
+            'offset'     => new PositiveIntValidator,
+            'sort_by'    => new FixedValuesValidator('created_at', 'id', 'name', 'updated_at', 'cost'),
+            'sort_order' => new SortOrderValidator
+        ];
+    }
 }

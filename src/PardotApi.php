@@ -5,6 +5,7 @@ namespace CyberDuck\Pardot;
 use CyberDuck\Pardot\Contract\PardotApi as PardotApiInterface;
 use CyberDuck\Pardot\Contract\PardotAuthenticator as PardotAuthenticatorInterface;
 use CyberDuck\Pardot\Query\AccountsQuery;
+use CyberDuck\Pardot\Query\CampaignsQuery;
 
 /**
  * PHP Wrapper for the pardot API
