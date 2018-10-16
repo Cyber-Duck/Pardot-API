@@ -128,4 +128,14 @@ class PardotApi implements PardotApiInterface
     {
         return AccountsQuery::obj($this);
     }
+
+    /**
+     * Returns a CampaignsQuery object
+     *
+     * @return CampaignsQuery
+     */
+    public function campaigns(): CampaignsQuery
+    {
+        return CampaignsQuery::obj($this);
+    }
 }
