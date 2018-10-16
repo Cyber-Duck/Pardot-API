@@ -27,9 +27,9 @@ trait Queryable
      * required: user_key, api_key
      * 
      * @param array $criteria
-     * @return string|null
+     * @return array|null
      */
-    public function query(array $criteria):? string
+    public function query(array $criteria):? array
     {
         return $this->setOperator('query')->setData($criteria)->query('result');
     }
