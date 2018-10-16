@@ -20,7 +20,7 @@
 trait Queryable
 {   
     /**
-     * Sends the request to retrieve the object results and returns them from the API
+     * Sends the request to query the object results and returns them from the API
      * 
      * /api/{operator}/version/{version}/do/query?...
      * 

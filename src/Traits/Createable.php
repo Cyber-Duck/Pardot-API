@@ -27,7 +27,7 @@ trait Createable
      * required: user_key, api_key, ...others depend on object type
      *
      * @param array $data
-     * @return string|null
+     * @return stdClass|null
      */
     public function create(array $data):? stdClass
     {

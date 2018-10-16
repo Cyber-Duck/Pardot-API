@@ -22,9 +22,12 @@ trait Readable
      * /api/{operator}/version/{version}/do/read/id/<id>?...
      * 
      * required: user_key, api_key, id
+     * 
+     * @param int $id
+     * @return stdClass|null
      */
     public function read(int $id):? stdClass
     {
-        return $this->setOperator(sprintf('read/id/%s', $id));
+        return $this->setOperator(sprintf('read/id/%s', $id))->query($this->object);
     }
 }
