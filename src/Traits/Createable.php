@@ -23,6 +23,8 @@ trait Createable
      * Sends the request to create the new object and returns it from the API
      * 
      * /api/{object}/version/{version}/do/create?...
+     * 
+     * required: user_key, api_key, ...others depend on object type
      *
      * @param array $data
      * @return string|null
