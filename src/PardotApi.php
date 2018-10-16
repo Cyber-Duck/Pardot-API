@@ -82,7 +82,7 @@ class PardotApi implements PardotApiInterface
         'customRedirects'    => CustomRedirectsQuery::class,
         'dynamicContent'     => DynamicContentQuery::class,
         'emailClicks'        => EmailClicksQuery::class,
-        //'email'              => EmailQuery::class,
+        'email'              => EmailQuery::class,
         'emailTemplates'     => EmailTemplatesQuery::class,
         'forms'              => FormsQuery::class,
         'lifecycleHistories' => LifecycleHistoriesQuery::class,
