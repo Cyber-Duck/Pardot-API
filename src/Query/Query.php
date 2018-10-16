@@ -39,7 +39,7 @@ class Query
     
     /**
      * API <object> identifier
-     * /api/<object>/version/3/do/<operator>/<identifier_field>/<identifier>
+     * /api/<object>/version/4/do/<operator>/<identifier_field>/<identifier>
      *
      * @var string
      */
@@ -47,11 +47,18 @@ class Query
 
     /**
      * API <operator> identifier
-     * /api/<object>/version/3/do/<operator>/<identifier_field>/<identifier>
+     * /api/<object>/version/4/do/<operator>/<identifier_field>/<identifier>
      *
      * @var string
      */
     protected $operator;
+
+    /**
+     * Array of request data
+     *
+     * @var array
+     */
+    protected $data = [];
 
     /**
      * Sets the API instance
@@ -99,6 +106,18 @@ class Query
     }
 
     /**
+     * Sets the request data - can used in things like insert and update actions
+     *
+     * @param array $data
+     * @return Query
+     */
+    protected function setData(array $data): Query
+    {
+        $this->data = $data;
+        return $this;
+    }
+
+    /**
      * Performs the API query
      * 
      * The passed property value is the property on the response object to return
@@ -135,7 +154,7 @@ class Query
                     throw new Exception(sprintf('Pardot query error: %s', $data->err));
                 }
                 if(!property_exists($data, $property)) {
-                    throw new Exception(sprintf('Pardot query error: cannot find property %s in response', $data->err));
+                    throw new Exception(sprintf('Pardot query error: cannot find property %s in response', $property));
                 }
                 return $data->{$property};
             } catch(Exception $e) {
@@ -171,11 +190,11 @@ class Query
     protected function getQueryRequestOptions(): array
     {
         return [
-            'form_params' => [
+            'form_params' => array_merge([
                 'user_key' => $this->api->getAuthenticator()->getUserkey(),
                 'api_key'  => $this->api->getAuthenticator()->getApiKey(),
                 'format'   => 'json'
-            ]
+            ], $this->data)
         ];
     }
 }
