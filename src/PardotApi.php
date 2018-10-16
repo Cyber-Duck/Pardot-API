@@ -2,8 +2,10 @@
 
 namespace CyberDuck\Pardot;
 
+use Exception;
 use CyberDuck\Pardot\Contract\PardotApi as PardotApiInterface;
 use CyberDuck\Pardot\Contract\PardotAuthenticator as PardotAuthenticatorInterface;
+use CyberDuck\Pardot\Formatter\JsonFormatter;
 use CyberDuck\Pardot\Query\AccountsQuery;
 use CyberDuck\Pardot\Query\CampaignsQuery;
 use CyberDuck\Pardot\Query\CustomFieldsQuery;
@@ -68,6 +70,41 @@ class PardotApi implements PardotApiInterface
      * @var boolean
      */
     protected $debug = false;
+
+    /**
+     * Response output format
+     *
+     * @var string
+     */
+    protected $format = 'json';
+
+    /**
+     * Allowed response output formats
+     *
+     * @var array
+     */
+    protected $formats = [
+        'json' => JsonFormatter::class
+    ];
+
+    /**
+     * Response output type
+     *
+     * @var string
+     */
+    protected $output = 'full';
+
+    /**
+     * Allowed response output types
+     *
+     * @var array
+     */
+    protected $outputs = [
+        'full',
+        'simple',
+        'mobile',
+        'bulk'
+    ];
 
     /**
      * Array of query object signatures available via a function call
@@ -169,6 +206,66 @@ class PardotApi implements PardotApiInterface
     public function getDebug(): bool
     {
         return $this->debug;
+    }
+
+    /**
+     * Sets the output format
+     *
+     * @param string $format
+     * @return PardotApiInterface
+     */
+    public function setFormat(string $format): PardotApiInterface
+    {
+        if(!array_key_exists($format, $this->formats)) {
+            throw new Exception(sprintf('%s is not an acceptable format', $format));
+        }
+        $this->format = $format;
+        return $this;
+    }
+
+    /**
+     * Returns the output format
+     *
+     * @return string
+     */
+    public function getFormat(): string
+    {
+        return $this->format;
+    }
+
+    /**
+     * Sets the output type
+     *
+     * @param string $output
+     * @return PardotApiInterface
+     */
+    public function setOuput(string $output): PardotApiInterface
+    {
+        if(!in_array($output, $this->outputs)) {
+            throw new Exception(sprintf('%s is not an acceptable output type', $output));
+        }
+        $this->output = $output;
+        return $this;
+    }
+
+    /**
+     * Returns the output type
+     *
+     * @return string
+     */
+    public function getOutput(): string
+    {
+        return $this->output;
+    }
+
+    /**
+     * Returns the formatter class namespace
+     *
+     * @return string
+     */
+    public function getFormatter(): string
+    {
+        return $this->formats[$this->format];
     }
 
     /**

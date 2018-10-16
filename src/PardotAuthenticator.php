@@ -133,22 +133,14 @@ class PardotAuthenticator implements PardotAuthenticatorInterface
                 $this->getLoginRequestEndpoint(),
                 $this->getLoginRequestOptions()
             );
-            $data = json_decode((string) $this->response->getBody());
-
             if($this->response->getStatusCode() !== 200) {
                 throw new Exception('Pardot API error: 200 response not returned');
             }
-            if(!is_object($data)) {
-                throw new Exception('Pardot API error: returned incorrect response');
-            }
-            if(property_exists($data, 'err')) {
-                throw new Exception(sprintf('Pardot API error: %s', $data->err));
-            }
-            if(!property_exists($data, 'api_key')) {
-                throw new Exception(sprintf('Pardot API error: %s', 'No API key returned in response'));
-            }
+            $namespace = $this->api->getFormatter();
+            $formatter = new $namespace((string) $this->response->getBody(), 'api_key');
+            
             $this->success = true;
-            $this->apiKey = $data->api_key;
+            $this->apiKey = $formatter->getData()->api_key;
         } catch(Exception $e) {
             if($this->api->getDebug() === true) {
                 echo $e->getMessage();
@@ -222,7 +214,8 @@ class PardotAuthenticator implements PardotAuthenticatorInterface
                 'email'    => $this->email,
                 'password' => $this->password,
                 'user_key' => $this->userKey,
-                'format'   => 'json'
+                'format'   => $this->api->getFormat(),
+                'output'   => $this->api->getOutput()
             ]
         ];
     }

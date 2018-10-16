@@ -142,21 +142,13 @@ class Query
                     $this->getQueryEndpoint(),
                     $this->getQueryRequestOptions()
                 );
-                $data = json_decode((string) $response->getBody());
-
                 if($response->getStatusCode() !== 200) {
                     throw new Exception('Pardot query error: 200 response not returned');
                 }
-                if(!is_object($data)) {
-                    throw new Exception('Pardot query error: returned incorrect response');
-                }
-                if(property_exists($data, 'err')) {
-                    throw new Exception(sprintf('Pardot query error: %s', $data->err));
-                }
-                if(!property_exists($data, $property)) {
-                    throw new Exception(sprintf('Pardot query error: cannot find property %s in response', $property));
-                }
-                return $data->{$property};
+                $namespace = $this->api->getFormatter();
+                $formatter = new $namespace((string) $response->getBody(), $property);
+
+                return $formatter->getData()->{$property};
             } catch(Exception $e) {
                 if($this->api->getDebug() === true) {
                     echo $e->getMessage();
@@ -193,7 +185,8 @@ class Query
             'form_params' => array_merge([
                 'user_key' => $this->api->getAuthenticator()->getUserkey(),
                 'api_key'  => $this->api->getAuthenticator()->getApiKey(),
-                'format'   => 'json'
+                'format'   => $this->api->getFormat(),
+                'output'   => $this->api->getOutput()
             ], $this->data)
         ];
     }

@@ -46,4 +46,41 @@ interface PardotApi
      * @return boolean
      */
     public function getDebug(): bool;
+
+    /**
+     * Sets the output format
+     *
+     * @param string $format
+     * @return PardotApi
+     */
+    public function setFormat(string $format): PardotApi;
+
+    /**
+     * Returns the output format
+     *
+     * @return string
+     */
+    public function getFormat(): string;
+
+    /**
+     * Sets the output type
+     *
+     * @param string $output
+     * @return PardotApi
+     */
+    public function setOuput(string $output): PardotApi;
+
+    /**
+     * Returns the output type
+     *
+     * @return string
+     */
+    public function getOutput(): string;
+
+    /**
+     * Returns the formatter class namespace
+     *
+     * @return string
+     */
+    public function getFormatter(): string;
 }
