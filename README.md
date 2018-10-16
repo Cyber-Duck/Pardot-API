@@ -16,7 +16,7 @@ This library simplifies the process of authentication and querying the Pardot AP
 
 ### Setup
 
-To initalise the Pardot API object pass your user email, password, and key credentials.
+To initalise the Pardot API object pass your user email, password, and user key credentials.
 
 ```php
 use CyberDuck\Pardot\PardotApi;
@@ -47,7 +47,7 @@ $pardot->account(); // returns an account object instance
 $pardot->account()->read(); // calls an account object query method to return a result
 ```
 
-The above read() call would return the account information similar to the below XML code.
+The above read() call would return the account information similar to the below XML code in JSON format.
 
 ```xml
 <rsp stat="ok" version="1.0">
