@@ -119,113 +119,13 @@ class PardotApi implements PardotApiInterface
         return $this->debug;
     }
 
+    /**
+     * Returns an AccountsQuery object
+     *
+     * @return AccountsQuery
+     */
     public function accounts(): AccountsQuery
     {
         return AccountsQuery::obj($this);
-    }
-    
-    public function campaigns(): AccountsQuery
-    {
-        return CampaignsQuery::obj($this);
-    }
-    
-    public function customFields(): CustomFieldsQuery
-    {
-        return CustomFieldsQuery::obj($this);
-    }
-    
-    public function customRedirects(): CustomRedirectsQuery
-    {
-        return CustomRedirectsQuery::obj($this);
-    }
-    
-    public function dynamicContent(): DynamicContentQuery
-    {
-        return DynamicContentQuery::obj($this);
-    }
-    
-    public function emailClicks(): EmailClicksQuery
-    {
-        return EmailClicksQuery::obj($this);
-    }
-    
-    public function email(): EmailQuery
-    {
-        return EmailQuery::obj($this);
-    }
-    
-    public function emailTemplates(): EmailTemplatesQuery
-    {
-        return EmailTemplatesQuery::obj($this);
-    }
-    
-    public function forms(): FormsQuery
-    {
-        return FormsQuery::obj($this);
-    }
-    
-    public function lifecycleHistories(): LifecycleHistoriesQuery
-    {
-        return LifecycleHistoriesQuery::obj($this);
-    }
-    
-    public function lifecycleStages(): LifecycleStagesQuery
-    {
-        return LifecycleStagesQuery::obj($this);
-    }
-    
-    public function listMemberships(): ListMembershipsQuery
-    {
-        return ListMembershipsQuery::obj($this);
-    }
-    
-    public function lists(): ListsQuery
-    {
-        return ListsQuery::obj($this);
-    }
-    
-    public function opportunities(): OpportunitiesQuery
-    {
-        return OpportunitiesQuery::obj($this);
-    }
-    
-    public function prospectAccounts(): ProspectAccountsQuery
-    {
-        return ProspectAccountsQuery::obj($this);
-    }
-    
-    public function prospects(): ProspectsQuery
-    {
-        return ProspectsQuery::obj($this);
-    }
-    
-    public function tagObjects(): TagObjectsQuery
-    {
-        return TagObjectsQuery::obj($this);
-    }
-    
-    public function tags(): TagsQuery
-    {
-        return TagsQuery::obj($this);
-    }
-    
-    public function users(): UsersQuery
-    {
-        return UsersQuery::obj($this);
-    }
-    
-    public function visitorActivities(): VisitorActivitiesQuery
-    {
-        return VisitorActivitiesQuery::obj($this);
-    }
-    
-    public function visitors(): VisitorsQuery
-    {
-        return VisitorsQuery::obj($this);
-    }
-    
-    public function visits(): VisitsQuery
-    {
-        return VisitsQuery::obj($this);
     }
 }
