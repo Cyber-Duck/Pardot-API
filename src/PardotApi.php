@@ -6,6 +6,26 @@ use CyberDuck\Pardot\Contract\PardotApi as PardotApiInterface;
 use CyberDuck\Pardot\Contract\PardotAuthenticator as PardotAuthenticatorInterface;
 use CyberDuck\Pardot\Query\AccountsQuery;
 use CyberDuck\Pardot\Query\CampaignsQuery;
+use CyberDuck\Pardot\Query\CustomFieldsQuery;
+use CyberDuck\Pardot\Query\CustomRedirectsQuery;
+use CyberDuck\Pardot\Query\DynamicContentQuery;
+use CyberDuck\Pardot\Query\EmailClicksQuery;
+use CyberDuck\Pardot\Query\EmailQuery;
+use CyberDuck\Pardot\Query\EmailTemplatesQuery;
+use CyberDuck\Pardot\Query\FormsQuery;
+use CyberDuck\Pardot\Query\LifecycleHistoriesQuery;
+use CyberDuck\Pardot\Query\LifecycleStagesQuery;
+use CyberDuck\Pardot\Query\ListMembershipsQuery;
+use CyberDuck\Pardot\Query\ListsQuery;
+use CyberDuck\Pardot\Query\OpportunitiesQuery;
+use CyberDuck\Pardot\Query\ProspectAccountsQuery;
+use CyberDuck\Pardot\Query\ProspectsQuery;
+use CyberDuck\Pardot\Query\TagObjectsQuery;
+use CyberDuck\Pardot\Query\TagsQuery;
+use CyberDuck\Pardot\Query\UsersQuery;
+use CyberDuck\Pardot\Query\VisitorActivitiesQuery;
+use CyberDuck\Pardot\Query\VisitorsQuery;
+use CyberDuck\Pardot\Query\VisitsQuery;
 
 /**
  * PHP Wrapper for the pardot API
@@ -49,6 +69,37 @@ class PardotApi implements PardotApiInterface
      */
     protected $debug = false;
 
+    /**
+     * Array of query object signatures available via a function call
+     * Object is returned via __call()
+     *
+     * @var array
+     */
+    protected $signatures = [
+        'accounts'           => AccountsQuery::class,
+        'campaigns'          => CampaignsQuery::class,
+        'customFields'       => CustomFieldsQuery::class,
+        'customRedirects'    => CustomRedirectsQuery::class,
+        'dynamicContent'     => DynamicContentQuery::class,
+        'emailClicks'        => EmailClicksQuery::class,
+        //'email'              => EmailQuery::class,
+        'emailTemplates'     => EmailTemplatesQuery::class,
+        'forms'              => FormsQuery::class,
+        'lifecycleHistories' => LifecycleHistoriesQuery::class,
+        'lifecycleStages'    => LifecycleStagesQuery::class,
+        //'listMemberships'    => ListMembershipsQuery::class,
+        //'lists'              => ListsQuery::class,
+        //'opportunities'      => OpportunitiesQuery::class,
+        //'prospectAccounts'   => ProspectAccountsQuery::class,
+        //'prospects'          => ProspectsQuery::class,
+        'tagObjects'         => TagObjectsQuery::class,
+        'tags'               => TagsQuery::class,
+        'users'              => UsersQuery::class,
+        //'visitorActivities'  => VisitorActivitiesQuery::class,
+        //'visitors'           => VisitorsQuery::class,
+        'visits'             => VisitsQuery::class,
+    ];
+    
     /**
      * Sets the PardotAuthenticator instance with the passed credentials and
      * sets the API version
@@ -121,22 +172,16 @@ class PardotApi implements PardotApiInterface
     }
 
     /**
-     * Returns an AccountsQuery object
+     * Magic method to return a query object form the signatures array
      *
-     * @return AccountsQuery
+     * @param string $name
+     * @param mixed $arguments
+     * @return void
      */
-    public function accounts(): AccountsQuery
+    public function __call(string $name, $arguments)
     {
-        return AccountsQuery::obj($this);
-    }
-
-    /**
-     * Returns a CampaignsQuery object
-     *
-     * @return CampaignsQuery
-     */
-    public function campaigns(): CampaignsQuery
-    {
-        return CampaignsQuery::obj($this);
+        if(array_key_exists($name, $this->signatures)) {
+            return $this->signatures[$name]::obj($this);
+        }
     }
 }
