@@ -3,7 +3,7 @@
 namespace CyberDuck\Pardot\Validator;
 
 /**
- * Date values validation class
+ * Query sort order validation class
  * 
  * @category   PardotApi
  * @package    PardotApi
@@ -14,19 +14,16 @@ namespace CyberDuck\Pardot\Validator;
  * @link       https://github.com/Cyber-Duck/Pardot-API
  * @since      1.0.0
  */
-class DateValidator extends Validator
+class SortOrderValidator extends Validator
 {
     /**
-     * Allowed date query values
+     * Allowed query values
      *
      * @var array
      */
     protected $values = [
-        'today', 
-        'yesterday', 
-        'last_7_days', 
-        'this_month', 
-        'last_month'
+        'ascending', 
+        'descending'
     ];
 
     /**
@@ -37,9 +34,6 @@ class DateValidator extends Validator
      */
     public function validate($value): bool
     {
-        if(in_array($value, $this->values)) {
-            return true;
-        }
-        // custom_time @todo
+        return in_array($value, $this->values);
     }
 }
