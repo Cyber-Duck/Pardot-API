@@ -2,10 +2,8 @@
 
 namespace CyberDuck\Pardot\Traits;
 
-use stdClass;
-
 /**
- * Trait to allow the updating of a specific object by ID in a generic way
+ * Trait to allow the deletion of specific object types in a generic way
  * 
  * @category   PardotApi
  * @package    PardotApi
@@ -16,21 +14,21 @@ use stdClass;
  * @link       https://github.com/Cyber-Duck/Pardot-API
  * @since      1.0.0
  */
-trait Updateable
+trait CanDelete
 {
     /**
-     * Sends the request to update the object and return it from the API
+     * Sends the request to delete the object
      * 
-     * /api/{operator}/version/{version}/do/update/id/<id>?...
+     * /api/{object}/version/{version}/do/delete/id/<id>?...
      * 
      * required: user_key, api_key, id
      *
      * @param int $id
-     * @param array $data
-     * @return stdClass|null
+     * @return int
+     * @todo returns HTTP 204 No Content on success
      */
-    public function update(int $id, array $data):? stdClass
+    public function delete(int $id):? stdClass
     {
-        return $this->setOperator(sprintf('update/id/%s', $id))->setData($data)->request($this->object);
+        return $this->setOperator(sprintf('delete/id/%s', $id))->request($this->object);
     }
 }

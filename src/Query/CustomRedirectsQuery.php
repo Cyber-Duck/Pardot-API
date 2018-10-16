@@ -3,8 +3,8 @@
 namespace CyberDuck\Pardot\Query;
 
 use CyberDuck\Pardot\Contract\QueryObject;
-use CyberDuck\Pardot\Traits\Queryable;
-use CyberDuck\Pardot\Traits\Readable;
+use CyberDuck\Pardot\Traits\CanQuery;
+use CyberDuck\Pardot\Traits\CanRead;
 use CyberDuck\Pardot\Validator\DateValidator;
 use CyberDuck\Pardot\Validator\FixedValuesValidator;
 use CyberDuck\Pardot\Validator\PositiveIntValidator;
@@ -25,7 +25,7 @@ use CyberDuck\Pardot\Validator\StringValidator;
  */
 class CustomRedirectsQuery extends Query implements QueryObject
 {
-    use Queryable, Readable;
+    use CanQuery, CanRead;
 
     /**
      * Object name

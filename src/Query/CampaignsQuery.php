@@ -3,10 +3,10 @@
 namespace CyberDuck\Pardot\Query;
 
 use CyberDuck\Pardot\Contract\QueryObject;
-use CyberDuck\Pardot\Traits\Createable;
-use CyberDuck\Pardot\Traits\Queryable;
-use CyberDuck\Pardot\Traits\Readable;
-use CyberDuck\Pardot\Traits\Updateable;
+use CyberDuck\Pardot\Traits\CanCreate;
+use CyberDuck\Pardot\Traits\CanQuery;
+use CyberDuck\Pardot\Traits\CanRead;
+use CyberDuck\Pardot\Traits\CanUpdate;
 use CyberDuck\Pardot\Validator\DateValidator;
 use CyberDuck\Pardot\Validator\FixedValuesValidator;
 use CyberDuck\Pardot\Validator\PositiveIntValidator;
@@ -27,7 +27,7 @@ use CyberDuck\Pardot\Validator\StringValidator;
  */
 class CampaignsQuery extends Query implements QueryObject
 {
-    use Queryable, Createable, Readable, Updateable;
+    use CanQuery, CanCreate, CanRead, CanUpdate;
 
     /**
      * Object name

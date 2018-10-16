@@ -19,7 +19,7 @@ use stdClass;
  * @link       https://github.com/Cyber-Duck/Pardot-API
  * @since      1.0.0
  */
-trait Createable
+trait CanCreate
 {
     /**
      * Sends the request to create the new object and returns it from the API

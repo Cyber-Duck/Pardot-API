@@ -5,7 +5,7 @@ namespace CyberDuck\Pardot\Traits;
 use stdClass;
 
 /**
- * Trait to allow the reading of a specific object by ID in a generic way
+ * Trait to allow the updating of a specific object by ID in a generic way
  * 
  * @category   PardotApi
  * @package    PardotApi
@@ -16,20 +16,21 @@ use stdClass;
  * @link       https://github.com/Cyber-Duck/Pardot-API
  * @since      1.0.0
  */
-trait Readable
+trait CanUpdate
 {
     /**
-     * Sends the request to retrieve the object and returns it from the API
+     * Sends the request to update the object and return it from the API
      * 
-     * /api/{operator}/version/{version}/do/read/id/<id>?...
+     * /api/{operator}/version/{version}/do/update/id/<id>?...
      * 
      * required: user_key, api_key, id
-     * 
+     *
      * @param int $id
+     * @param array $data
      * @return stdClass|null
      */
-    public function read(int $id):? stdClass
+    public function update(int $id, array $data):? stdClass
     {
-        return $this->setOperator(sprintf('read/id/%s', $id))->request($this->object);
+        return $this->setOperator(sprintf('update/id/%s', $id))->setData($data)->request($this->object);
     }
 }

@@ -19,7 +19,7 @@ namespace CyberDuck\Pardot\Traits;
  * @link       https://github.com/Cyber-Duck/Pardot-API
  * @since      1.0.0
  */
-trait Queryable
+trait CanQuery
 {   
     /**
      * Sends the request to query the object results and returns them from the API

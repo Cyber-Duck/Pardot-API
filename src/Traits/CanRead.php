@@ -2,8 +2,10 @@
 
 namespace CyberDuck\Pardot\Traits;
 
+use stdClass;
+
 /**
- * Trait to allow the deletion of specific object types in a generic way
+ * Trait to allow the reading of a specific object by ID in a generic way
  * 
  * @category   PardotApi
  * @package    PardotApi
@@ -14,21 +16,20 @@ namespace CyberDuck\Pardot\Traits;
  * @link       https://github.com/Cyber-Duck/Pardot-API
  * @since      1.0.0
  */
-trait Deleteable
+trait CanRead
 {
     /**
-     * Sends the request to delete the object
+     * Sends the request to retrieve the object and returns it from the API
      * 
-     * /api/{object}/version/{version}/do/delete/id/<id>?...
+     * /api/{operator}/version/{version}/do/read/id/<id>?...
      * 
      * required: user_key, api_key, id
-     *
+     * 
      * @param int $id
-     * @return int
-     * @todo returns HTTP 204 No Content on success
+     * @return stdClass|null
      */
-    public function delete(int $id):? stdClass
+    public function read(int $id):? stdClass
     {
-        return $this->setOperator(sprintf('delete/id/%s', $id))->request($this->object);
+        return $this->setOperator(sprintf('read/id/%s', $id))->request($this->object);
     }
 }
