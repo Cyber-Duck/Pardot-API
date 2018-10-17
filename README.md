@@ -55,27 +55,27 @@ $pardot->account()->read(); // retrieves current account information
 ### Campaign methods
 
 ```php
-$pardot->campaigns()->query([...]); // queries and returns a filtered list
-$pardot->campaigns()->create([...]); // creates an object using passed array data
-$pardot->campaigns()->read(1); // queries an object by ID
-$pardot->campaigns()->update(1, [...]); // updates an object by ID using passed array data 
+$pardot->campaign()->query([...]); // queries and returns a filtered list
+$pardot->campaign()->create([...]); // creates an object using passed array data
+$pardot->campaign()->read(1); // queries an object by ID
+$pardot->campaign()->update(1, [...]); // updates an object by ID using passed array data 
 ```
 
 ### Custom Fields methods
 
 ```php
-$pardot->customFields()->query([...]); // queries and returns a filtered list
-$pardot->customFields()->create([...]); // creates an object using passed array data
-$pardot->customFields()->read(1); // queries an object by ID
-$pardot->customFields()->update(1, [...]); // updates an object by ID using passed array data 
-$pardot->customFields()->delete(1); // deletes an object by ID
+$pardot->customField()->query([...]); // queries and returns a filtered list
+$pardot->customField()->create([...]); // creates an object using passed array data
+$pardot->customField()->read(1); // queries an object by ID
+$pardot->customField()->update(1, [...]); // updates an object by ID using passed array data 
+$pardot->customField()->delete(1); // deletes an object by ID
 ```
 
 ### Custom Redirects methods
 
 ```php
-$pardot->customRedirects()->query([...]); // queries and returns a filtered list
-$pardot->customRedirects()->read(1); // queries an object by ID
+$pardot->customRedirect()->query([...]); // queries and returns a filtered list
+$pardot->customRedirect()->read(1); // queries an object by ID
 ```
 
 ### Dynamic Content methods
@@ -88,7 +88,7 @@ $pardot->dynamicContent()->read(1); // queries an object by ID
 ### Email Clicks methods
 
 ```php
-$pardot->emailClicks()->query([...]); // queries and returns a filtered list
+$pardot->emailClick()->query([...]); // queries and returns a filtered list
 ```
 
 ### Email methods
@@ -110,21 +110,21 @@ $pardot->emailTemplate()->listOneToOne(); // Returns a list of email templates u
 ### Forms methods
 
 ```php
-$pardot->forms()->query([...]); // queries and returns a filtered list
-$pardot->forms()->read(1); // queries an object by ID
+$pardot->form()->query([...]); // queries and returns a filtered list
+$pardot->form()->read(1); // queries an object by ID
 ```
 
 ### Lifecycle Histories methods
 
 ```php
-$pardot->lifecycleHistories()->query([...]); // queries and returns a filtered list
-$pardot->lifecycleHistories()->read(1); // queries an object by ID
+$pardot->lifecycleHistory()->query([...]); // queries and returns a filtered list
+$pardot->lifecycleHistory()->read(1); // queries an object by ID
 ```
 
 ### Lifecycle Stages methods
 
 ```php
-$pardot->lifecycleStages()->query([...]); // queries and returns a filtered list
+$pardot->lifecycleStage()->query([...]); // queries and returns a filtered list
 ```
 
 ### List Memberships methods
@@ -160,23 +160,23 @@ $pardot->lifecycleStages()->query([...]); // queries and returns a filtered list
 ### Tag Objects methods
 
 ```php
-$pardot->tagObjects()->query([...]); // queries and returns a filtered list
-$pardot->tagObjects()->read(1); // queries an object by ID
+$pardot->tagObject()->query([...]); // queries and returns a filtered list
+$pardot->tagObject()->read(1); // queries an object by ID
 ```
 
 ### Tags methods
 
 ```php
-$pardot->tags()->query([...]); // queries and returns a filtered list
-$pardot->tags()->read(1); // queries an object by ID
+$pardot->tag()->query([...]); // queries and returns a filtered list
+$pardot->tag()->read(1); // queries an object by ID
 ```
 
 ### Users methods
 
 ```php
-$pardot->users()->query([...]); // queries and returns a filtered list
-$pardot->users()->read(1); // queries an object by ID
-$pardot->users()->readByEmail('name@example.com'); // queries an object by email
+$pardot->user()->query([...]); // queries and returns a filtered list
+$pardot->user()->read(1); // queries an object by ID
+$pardot->user()->readByEmail('name@example.com'); // queries an object by email
 ```
 
 ### Visitor Activities methods
@@ -188,16 +188,16 @@ $pardot->users()->readByEmail('name@example.com'); // queries an object by email
 ### Visitors methods
 
 ```php
-$pardot->visitors()->query([...]); // queries and returns a filtered list
-$pardot->visitors()->read(1); // queries an object by ID
-$pardot->visitors()->assign(1,2); // Assigns or reassigns the visitor by ID to a prospect ID.
+$pardot->visitor()->query([...]); // queries and returns a filtered list
+$pardot->visitor()->read(1); // queries an object by ID
+$pardot->visitor()->assign(1,2); // Assigns or reassigns the visitor by ID to a prospect ID.
 ```
 
 ### Visits methods
 
 ```php
-$pardot->visits()->query([...]); // queries and returns a filtered list
-$pardot->visits()->read(1); // queries an object by ID
+$pardot->visit()->query([...]); // queries and returns a filtered list
+$pardot->visit()->read(1); // queries an object by ID
 ```
 
 ## Debugging

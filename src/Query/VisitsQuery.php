@@ -34,7 +34,7 @@ class VisitsQuery extends Query implements QueryObject
     /**
      * Returns an array of allowed query criteria and validators for the values
      * 
-     * One of the following parameters must be used when issuing a visits query
+     * One of the following parameters must be used when issuing a visit query
      * @todo make sure one of the below list keys is set
      *
      * @return array
