@@ -1,10 +1,10 @@
 # Pardot-API
 PHP package to interact with the Pardot API
 
-[![Latest Stable Version](https://poser.pugx.org/cyber-duck/Pardot-API/v/stable)](https://packagist.org/packages/cyber-duck/Pardot-API)
-[![Latest Unstable Version](https://poser.pugx.org/cyber-duck/Pardot-API/v/unstable)](https://packagist.org/packages/cyber-duck/Pardot-API)
-[![Total Downloads](https://poser.pugx.org/cyber-duck/Pardot-API/downloads)](https://packagist.org/packages/cyber-duck/Pardot-API)
-[![License](https://poser.pugx.org/cyber-duck/Pardot-API/license)](https://packagist.org/packages/cyber-duck/Pardot-API)
+[![Latest Stable Version](https://poser.pugx.org/cyber-duck/pardot-api/v/stable)](https://packagist.org/packages/cyber-duck/pardot-api)
+[![Latest Unstable Version](https://poser.pugx.org/cyber-duck/pardot-api/v/unstable)](https://packagist.org/packages/cyber-duck/pardot-api)
+[![Total Downloads](https://poser.pugx.org/cyber-duck/pardot-api/downloads)](https://packagist.org/packages/cyber-duck/pardot-api)
+[![License](https://poser.pugx.org/cyber-duck/pardot-api/license)](https://packagist.org/packages/cyber-duck/pardot-api)
 
 Author: [Andrew Mc Cormack](https://github.com/Andrew-Mc-Cormack)
 
