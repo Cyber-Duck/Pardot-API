@@ -28,38 +28,11 @@ $pardot = new PardotApi(
 );
 ```
 
-## Debugging
-
-Error messages can be enabled by turning debugging on. Requests to the Pardot API will fail silently by default so as to prevent
-fatal application errors. Extra response checking should be conducted when implementing this library as most methods will return
-null when there is an issue with the API query.
-
-```php
-$pardot->setDebug(true);
-```
-
 ## Method Objects
 
-Methods can be called on the PardotApi instance which correspond to the object types in Pardot. When calling a method a specific Object instance is returned granting access to the object query methods.
-
-```php
-$pardot->account(); // returns an account object instance
-$pardot->account()->read(); // calls an account object query method to return a result
-```
-
-The above read() call would return the account information similar to the below XML code in JSON format.
-
-```xml
-<rsp stat="ok" version="1.0">
-    <account>
-        <id>1</id>
-        <company>Company Name</company>
-        <level>Pardot Account Level</level>
-        ...
-    </account>
-</rsp>
-```
-
+Methods can be called on the PardotApi instance which correspond to the object types in Pardot. 
+When calling a method a specific Object instance is returned granting access to the object methods.
+Response are either arrays of or single PHP stdClass objects.
 The full list of objects available are as follows:
 
 ### Account methods
@@ -124,3 +97,21 @@ $pardot->customFields()->delete(1); // deletes a custom field by ID
 ### Visitors methods
 
 ### Visits methods
+
+## Debugging
+
+Error messages can be enabled by turning debugging on. Requests to the Pardot API will fail silently by default so as to prevent
+fatal application errors. Extra response checking should be conducted when implementing this library as most methods will return
+null when there is an issue with the API query.
+
+```php
+$pardot->setDebug(true);
+```
+
+## Output Type
+
+You can change the output type to full, simple, mobile, or bulk. Defaults to full.
+
+```php
+$pardot->setOuput('full');
+```
