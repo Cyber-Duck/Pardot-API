@@ -55,48 +55,34 @@ The above read() call would return the account information similar to the below 
         <id>1</id>
         <company>Company Name</company>
         <level>Pardot Account Level</level>
-        <website>http://www.company-website.com</website>
-        <vanity_domain>http://go.localhost.com</vanity_domain>
-        <plugin_campaign_id>1</plugin_campaign_id>
-        <tracking_code_template>[... Tracking code template ...]</tracking_code_template>
-        <address1>1234 Any Streep</address1>
-        <address2>Suite 9876</address2>
-        <city>Atlanta</city>
-        <state>Georgia</state>
-        <territory/>
-        <zip>30326</zip>
-        <country>United States</country>
-        <phone>555-555-5555</phone>
-        <fax/>
-        <created_at>2008-03-26 09:42:51</created_at>
-        <updated_at>2016-11-10 15:06:33</updated_at>
+        ...
     </account>
 </rsp>
 ```
 
 The full list of objects available are as follows:
 
+### Account methods
+
 ```php
-$pardot->account();
-$pardot->campaigns();
-$pardot->customFields();
-$pardot->customRedirects();
-$pardot->dynamicContent();
-$pardot->emailClicks();
-$pardot->email();
-$pardot->emailTemplates();
-$pardot->forms();
-$pardot->lifecycleHistories();
-$pardot->lifecycleStages();
-$pardot->listMemberships();
-$pardot->lists();
-$pardot->opportunities();
-$pardot->prospectAccounts();
-$pardot->prospects();
-$pardot->tagObjects();
-$pardot->tags();
-$pardot->users();
-$pardot->visitorActivities();
-$pardot->visitors();
-$pardot->visits();
+$pardot->account()->read(); // retrieves current account information
+```
+
+### Campaign methods
+
+```php
+$pardot->campaigns()->query([...]); // queries and returns a filtered campaign list
+$pardot->campaigns()->create([...]); // creates a campaign with array data
+$pardot->campaigns()->read(1); // queries a campaign by ID
+$pardot->campaigns()->update(1, [...]); // updates a campaign by ID with array data 
+```
+
+### Custom Fields methods
+
+```php
+$pardot->customFields()->query([...]); // queries and returns a filtered custom field list
+$pardot->customFields()->create([...]); // creates a custom field with array data
+$pardot->customFields()->read(1); // queries a custom field by ID
+$pardot->customFields()->update(1, [...]); // updates a custom field by ID with array data 
+$pardot->customFields()->delete(1); // deletes a custom field by ID
 ```
