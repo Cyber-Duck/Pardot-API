@@ -39,11 +39,11 @@ $result = $pardot->request('campaign', 'read/id/1');
 $result = $pardot->request('campaign', 'query', ['created_after' => 'today']);
 ```
 
-## Method Objects
+## Object Methods
 
-Methods can be called on the PardotApi instance which correspond to the object types in Pardot. 
-When calling a method a specific Object instance is returned granting access to the object methods.
-Response are either arrays of or single PHP stdClass objects.
+The PardotApi instance has functions which correspond to the object types in Pardot to simplify calls to the API.
+When calling one of these functions a query object is returned (->campaigns() returns a CampaignsQuery object).
+These returned objects in turn have functions corresponding to different object actions such as query, create, update, insert, delete etc.
 The full list of objects available are as follows:
 
 ### Account methods
