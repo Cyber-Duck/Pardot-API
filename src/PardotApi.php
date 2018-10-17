@@ -22,6 +22,7 @@ use CyberDuck\PardotApi\Query\ListsQuery;
 use CyberDuck\PardotApi\Query\OpportunitiesQuery;
 use CyberDuck\PardotApi\Query\ProspectAccountsQuery;
 use CyberDuck\PardotApi\Query\ProspectsQuery;
+use CyberDuck\PardotApi\Query\Query;
 use CyberDuck\PardotApi\Query\TagObjectsQuery;
 use CyberDuck\PardotApi\Query\TagsQuery;
 use CyberDuck\PardotApi\Query\UsersQuery;
@@ -280,5 +281,22 @@ class PardotApi implements PardotApiInterface
         if(array_key_exists($name, $this->signatures)) {
             return $this->signatures[$name]::obj($this);
         }
+    }
+    
+    /**
+     * Performs a query against any API endpoint
+     *
+     * @param string $object
+     * @param string $operator
+     * @param array $data
+     * @return mixed
+     */
+    public function query(string $object, string $operator, array $data = [])
+    {
+        return Query::obj($this)
+            ->setObject($object)
+            ->setOperator($operator)
+            ->setData($data)
+            ->request($object);
     }
 }

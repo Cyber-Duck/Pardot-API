@@ -17,6 +17,7 @@ This library simplifies the process of authentication and querying the Pardot AP
 ### Setup
 
 To initalise the Pardot API object pass your user email, password, and user key credentials.
+Any subsequent request to fetch data from the API will automatically perform the authentication actions before trying to fetch data.
 
 ```php
 use CyberDuck\PardotApi\PardotApi;
@@ -26,6 +27,16 @@ $pardot = new PardotApi(
     'PASSWORD',
     'USER_KEY'
 );
+```
+
+## Querying the API
+
+You can call the query method on an any pardot object passing the object, operator, and data array (optional)
+
+```php
+$result = $pardot->query('campaign', 'read/id/1');
+
+$result = $pardot->query('campaign', 'query', ['created_after' => 'today']);
 ```
 
 ## Method Objects
