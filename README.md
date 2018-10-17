@@ -115,3 +115,4 @@ You can change the output type to full, simple, mobile, or bulk. Defaults to ful
 ```php
 $pardot->setOuput('full');
 ```
+
