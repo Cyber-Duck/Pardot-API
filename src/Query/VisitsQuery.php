@@ -1,12 +1,12 @@
 <?php
 
-namespace CyberDuck\Pardot\Query;
+namespace CyberDuck\PardotApi\Query;
 
-use CyberDuck\Pardot\Contract\QueryObject;
-use CyberDuck\Pardot\Traits\CanQuery;
-use CyberDuck\Pardot\Traits\CanRead;
-use CyberDuck\Pardot\Validator\PositiveIntListValidator;
-use CyberDuck\Pardot\Validator\PositiveIntValidator;
+use CyberDuck\PardotApi\Contract\QueryObject;
+use CyberDuck\PardotApi\Traits\CanQuery;
+use CyberDuck\PardotApi\Traits\CanRead;
+use CyberDuck\PardotApi\Validator\PositiveIntListValidator;
+use CyberDuck\PardotApi\Validator\PositiveIntValidator;
 
 /**
  * Visits object representation

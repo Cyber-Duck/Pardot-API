@@ -1,8 +1,8 @@
 <?php
 
-namespace CyberDuck\Pardot\Contract;
+namespace CyberDuck\PardotApi\Contract;
 
-use CyberDuck\Pardot\Contract\PardotAuthenticator;
+use CyberDuck\PardotApi\Contract\PardotAuthenticator;
 
 /**
  * POST: https://pi.pardot.com/api/<object>/version/3/do/<operator>/<identifier_field>/<identifier>

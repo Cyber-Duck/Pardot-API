@@ -1,6 +1,6 @@
 <?php
 
-namespace CyberDuck\Pardot\Query;
+namespace CyberDuck\PardotApi\Query;
 
 /**
  * Prospect Accounts object representation

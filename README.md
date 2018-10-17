@@ -19,7 +19,7 @@ This library simplifies the process of authentication and querying the Pardot AP
 To initalise the Pardot API object pass your user email, password, and user key credentials.
 
 ```php
-use CyberDuck\Pardot\PardotApi;
+use CyberDuck\PardotApi\PardotApi;
 
 $pardot = new PardotApi(
     'EMAIL',

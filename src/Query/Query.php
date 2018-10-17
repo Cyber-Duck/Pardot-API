@@ -1,9 +1,9 @@
 <?php
 
-namespace CyberDuck\Pardot\Query;
+namespace CyberDuck\PardotApi\Query;
 
 use Exception;
-use CyberDuck\Pardot\Contract\PardotApi;
+use CyberDuck\PardotApi\Contract\PardotApi;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;

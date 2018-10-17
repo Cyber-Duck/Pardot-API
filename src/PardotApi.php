@@ -3,31 +3,31 @@
 namespace CyberDuck\Pardot;
 
 use Exception;
-use CyberDuck\Pardot\Contract\PardotApi as PardotApiInterface;
-use CyberDuck\Pardot\Contract\PardotAuthenticator as PardotAuthenticatorInterface;
-use CyberDuck\Pardot\Formatter\JsonFormatter;
-use CyberDuck\Pardot\Query\AccountsQuery;
-use CyberDuck\Pardot\Query\CampaignsQuery;
-use CyberDuck\Pardot\Query\CustomFieldsQuery;
-use CyberDuck\Pardot\Query\CustomRedirectsQuery;
-use CyberDuck\Pardot\Query\DynamicContentQuery;
-use CyberDuck\Pardot\Query\EmailClicksQuery;
-use CyberDuck\Pardot\Query\EmailQuery;
-use CyberDuck\Pardot\Query\EmailTemplatesQuery;
-use CyberDuck\Pardot\Query\FormsQuery;
-use CyberDuck\Pardot\Query\LifecycleHistoriesQuery;
-use CyberDuck\Pardot\Query\LifecycleStagesQuery;
-use CyberDuck\Pardot\Query\ListMembershipsQuery;
-use CyberDuck\Pardot\Query\ListsQuery;
-use CyberDuck\Pardot\Query\OpportunitiesQuery;
-use CyberDuck\Pardot\Query\ProspectAccountsQuery;
-use CyberDuck\Pardot\Query\ProspectsQuery;
-use CyberDuck\Pardot\Query\TagObjectsQuery;
-use CyberDuck\Pardot\Query\TagsQuery;
-use CyberDuck\Pardot\Query\UsersQuery;
-use CyberDuck\Pardot\Query\VisitorActivitiesQuery;
-use CyberDuck\Pardot\Query\VisitorsQuery;
-use CyberDuck\Pardot\Query\VisitsQuery;
+use CyberDuck\PardotApi\Contract\PardotApi as PardotApiInterface;
+use CyberDuck\PardotApi\Contract\PardotAuthenticator as PardotAuthenticatorInterface;
+use CyberDuck\PardotApi\Formatter\JsonFormatter;
+use CyberDuck\PardotApi\Query\AccountsQuery;
+use CyberDuck\PardotApi\Query\CampaignsQuery;
+use CyberDuck\PardotApi\Query\CustomFieldsQuery;
+use CyberDuck\PardotApi\Query\CustomRedirectsQuery;
+use CyberDuck\PardotApi\Query\DynamicContentQuery;
+use CyberDuck\PardotApi\Query\EmailClicksQuery;
+use CyberDuck\PardotApi\Query\EmailQuery;
+use CyberDuck\PardotApi\Query\EmailTemplatesQuery;
+use CyberDuck\PardotApi\Query\FormsQuery;
+use CyberDuck\PardotApi\Query\LifecycleHistoriesQuery;
+use CyberDuck\PardotApi\Query\LifecycleStagesQuery;
+use CyberDuck\PardotApi\Query\ListMembershipsQuery;
+use CyberDuck\PardotApi\Query\ListsQuery;
+use CyberDuck\PardotApi\Query\OpportunitiesQuery;
+use CyberDuck\PardotApi\Query\ProspectAccountsQuery;
+use CyberDuck\PardotApi\Query\ProspectsQuery;
+use CyberDuck\PardotApi\Query\TagObjectsQuery;
+use CyberDuck\PardotApi\Query\TagsQuery;
+use CyberDuck\PardotApi\Query\UsersQuery;
+use CyberDuck\PardotApi\Query\VisitorActivitiesQuery;
+use CyberDuck\PardotApi\Query\VisitorsQuery;
+use CyberDuck\PardotApi\Query\VisitsQuery;
 
 /**
  * PHP Wrapper for the pardot API

@@ -1,6 +1,6 @@
 <?php
 
-namespace CyberDuck\Pardot\Query;
+namespace CyberDuck\PardotApi\Query;
 
 /**
  * List Query object representation

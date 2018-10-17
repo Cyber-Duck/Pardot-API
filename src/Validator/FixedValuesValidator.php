@@ -1,6 +1,6 @@
 <?php
 
-namespace CyberDuck\Pardot\Validator;
+namespace CyberDuck\PardotApi\Validator;
 
 /**
  * Fixed values validation class

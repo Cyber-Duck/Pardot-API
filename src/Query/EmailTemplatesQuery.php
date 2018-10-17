@@ -1,8 +1,8 @@
 <?php
 
-namespace CyberDuck\Pardot\Query;
+namespace CyberDuck\PardotApi\Query;
 
-use CyberDuck\Pardot\Traits\CanRead;
+use CyberDuck\PardotApi\Traits\CanRead;
 
 /**
  * Email Templates object representation

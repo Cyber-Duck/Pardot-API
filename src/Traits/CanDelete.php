@@ -1,6 +1,6 @@
 <?php
 
-namespace CyberDuck\Pardot\Traits;
+namespace CyberDuck\PardotApi\Traits;
 
 /**
  * Trait to allow the deletion of specific object types in a generic way

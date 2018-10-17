@@ -1,6 +1,6 @@
 <?php
 
-namespace CyberDuck\Pardot\Traits;
+namespace CyberDuck\PardotApi\Traits;
 
 use stdClass;
 

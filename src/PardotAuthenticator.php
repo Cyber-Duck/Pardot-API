@@ -2,8 +2,8 @@
 
 namespace CyberDuck\Pardot;
 
-use CyberDuck\Pardot\Contract\PardotApi;
-use CyberDuck\Pardot\Contract\PardotAuthenticator as PardotAuthenticatorInterface;
+use CyberDuck\PardotApi\Contract\PardotApi;
+use CyberDuck\PardotApi\Contract\PardotAuthenticator as PardotAuthenticatorInterface;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;

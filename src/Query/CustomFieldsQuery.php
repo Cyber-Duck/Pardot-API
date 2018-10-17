@@ -1,16 +1,16 @@
 <?php
 
-namespace CyberDuck\Pardot\Query;
+namespace CyberDuck\PardotApi\Query;
 
-use CyberDuck\Pardot\Contract\QueryObject;
-use CyberDuck\Pardot\Traits\CanCreate;
-use CyberDuck\Pardot\Traits\CanDelete;
-use CyberDuck\Pardot\Traits\CanQuery;
-use CyberDuck\Pardot\Traits\CanRead;
-use CyberDuck\Pardot\Traits\CanUpdate;
-use CyberDuck\Pardot\Validator\DateValidator;
-use CyberDuck\Pardot\Validator\PositiveIntValidator;
-use CyberDuck\Pardot\Validator\SortOrderValidator;
+use CyberDuck\PardotApi\Contract\QueryObject;
+use CyberDuck\PardotApi\Traits\CanCreate;
+use CyberDuck\PardotApi\Traits\CanDelete;
+use CyberDuck\PardotApi\Traits\CanQuery;
+use CyberDuck\PardotApi\Traits\CanRead;
+use CyberDuck\PardotApi\Traits\CanUpdate;
+use CyberDuck\PardotApi\Validator\DateValidator;
+use CyberDuck\PardotApi\Validator\PositiveIntValidator;
+use CyberDuck\PardotApi\Validator\SortOrderValidator;
 
 /**
  * Custom Fields object representation

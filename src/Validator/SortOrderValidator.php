@@ -1,6 +1,6 @@
 <?php
 
-namespace CyberDuck\Pardot\Validator;
+namespace CyberDuck\PardotApi\Validator;
 
 /**
  * Query sort order validation class

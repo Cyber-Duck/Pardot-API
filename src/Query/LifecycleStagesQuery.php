@@ -1,12 +1,12 @@
 <?php
 
-namespace CyberDuck\Pardot\Query;
+namespace CyberDuck\PardotApi\Query;
 
-use CyberDuck\Pardot\Contract\QueryObject;
-use CyberDuck\Pardot\Traits\CanQuery;
-use CyberDuck\Pardot\Validator\FixedValuesValidator;
-use CyberDuck\Pardot\Validator\PositiveIntValidator;
-use CyberDuck\Pardot\Validator\SortOrderValidator;
+use CyberDuck\PardotApi\Contract\QueryObject;
+use CyberDuck\PardotApi\Traits\CanQuery;
+use CyberDuck\PardotApi\Validator\FixedValuesValidator;
+use CyberDuck\PardotApi\Validator\PositiveIntValidator;
+use CyberDuck\PardotApi\Validator\SortOrderValidator;
 
 /**
  * Lifecycyle Stages object representation

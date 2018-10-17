@@ -1,6 +1,6 @@
 <?php
 
-namespace CyberDuck\Pardot\Traits;
+namespace CyberDuck\PardotApi\Traits;
 
 /**
  * Trait to allow the querying of specific object results in a generic way

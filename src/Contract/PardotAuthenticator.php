@@ -1,6 +1,6 @@
 <?php
 
-namespace CyberDuck\Pardot\Contract;
+namespace CyberDuck\PardotApi\Contract;
 
 use GuzzleHttp\Psr7\Response;
 

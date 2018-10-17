@@ -1,6 +1,6 @@
 <?php
 
-namespace CyberDuck\Pardot\Formatter;
+namespace CyberDuck\PardotApi\Formatter;
 
 use Exception;
 
