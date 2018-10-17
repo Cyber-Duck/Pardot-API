@@ -34,9 +34,9 @@ $pardot = new PardotApi(
 You can call the query method on an any pardot object passing the object, operator, and data array (optional)
 
 ```php
-$result = $pardot->query('campaign', 'read/id/1');
+$result = $pardot->request('campaign', 'read/id/1');
 
-$result = $pardot->query('campaign', 'query', ['created_after' => 'today']);
+$result = $pardot->request('campaign', 'query', ['created_after' => 'today']);
 ```
 
 ## Method Objects

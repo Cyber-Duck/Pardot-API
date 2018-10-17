@@ -83,4 +83,14 @@ interface PardotApi
      * @return string
      */
     public function getFormatter(): string;
+    
+    /**
+     * Performs a query request against any API endpoint
+     *
+     * @param string $object
+     * @param string $operator
+     * @param array $data
+     * @return mixed
+     */
+    public function request(string $object, string $operator, array $data = []);
 }

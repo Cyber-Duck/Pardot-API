@@ -284,14 +284,14 @@ class PardotApi implements PardotApiInterface
     }
     
     /**
-     * Performs a query against any API endpoint
+     * Performs a query request against any API endpoint
      *
      * @param string $object
      * @param string $operator
      * @param array $data
      * @return mixed
      */
-    public function query(string $object, string $operator, array $data = [])
+    public function request(string $object, string $operator, array $data = [])
     {
         return Query::obj($this)
             ->setObject($object)
