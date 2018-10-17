@@ -86,3 +86,41 @@ $pardot->customFields()->read(1); // queries a custom field by ID
 $pardot->customFields()->update(1, [...]); // updates a custom field by ID with array data 
 $pardot->customFields()->delete(1); // deletes a custom field by ID
 ```
+
+### Custom Redirects methods
+
+### Dynamic Content methods
+
+### Email Clicks methods
+
+### Email methods
+
+### Email Templates methods
+
+### Forms methods
+
+### Lifecycle Histories methods
+
+### Lifecycle Stages methods
+
+### List Memberships methods
+
+### Lists methods
+
+### Opportunities methods
+
+### Prospect Accounts methods
+
+### Prospects methods
+
+### Tag Objects methods
+
+### Tags methods
+
+### Users methods
+
+### Visitor Activities methods
+
+### Visitors methods
+
+### Visits methods
