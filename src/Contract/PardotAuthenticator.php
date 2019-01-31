@@ -33,7 +33,7 @@ interface PardotAuthenticator
      *
      * @return void
      */
-    public function doAuthentication(): void;
+    public function doAuthentication();
   
     /**
      * Returns the Response object or null on failure

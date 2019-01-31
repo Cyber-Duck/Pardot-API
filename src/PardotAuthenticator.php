@@ -121,10 +121,10 @@ class PardotAuthenticator implements PardotAuthenticatorInterface
     /**
      * Performs the login authentication request to return and set the API key 
      *
-     * @return void
+     * @return static
      * @throws Exception
      */
-    public function doAuthentication(): void
+    public function doAuthentication()
     {
         try {
             $this->authenticated = true;
@@ -147,6 +147,7 @@ class PardotAuthenticator implements PardotAuthenticatorInterface
                 die;
             }
         }
+        return $this;
     }
 
     /**
