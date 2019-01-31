@@ -3,6 +3,7 @@
 namespace CyberDuck\PardotApi\Formatter;
 
 use Exception;
+use stdClass;
 
 /**
  * JSON Formatter
