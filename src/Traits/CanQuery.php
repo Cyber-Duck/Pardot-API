@@ -29,9 +29,9 @@ trait CanQuery
      * required: user_key, api_key
      * 
      * @param array $criteria
-     * @return array|null
+     * @return mixed
      */
-    public function query(array $criteria):? array
+    public function query(array $criteria = [])
     {
         return $this->setOperator('query')->setData($criteria)->request('result');
     }

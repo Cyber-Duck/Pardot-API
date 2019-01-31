@@ -127,10 +127,10 @@ class Query
      * while reading a results list may require reading <result> property
      *
      * @param string $property
-     * @return string|null
+     * @return mixed
      * @throws Exception
      */
-    protected function request(string $property):? string
+    protected function request(string $property)
     {
         if(!$this->api->getAuthenticator()->isAuthenticated()) {
             $this->api->getAuthenticator()->doAuthentication();

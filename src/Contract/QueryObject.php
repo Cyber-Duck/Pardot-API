@@ -12,9 +12,9 @@ interface QueryObject
      * required: user_key, api_key
      * 
      * @param array $criteria
-     * @return array|null
+     * @return mixed
      */
-    public function query(array $criteria):? array;
+    public function query(array $criteria);
 
     /**
      * Returns an array of allowed query criteria options
