@@ -6,7 +6,7 @@ use stdClass;
 
 /**
  * Account object representation
- * 
+ *
  * @category   PardotApi
  * @package    PardotApi
  * @author     Andrew Mc Cormack <andy@cyber-duck.co.uk>
@@ -27,12 +27,12 @@ class AccountsQuery extends Query
 
     /**
      * Returns the data for the account of the currently logged in user.
-     * 
+     *
      * /api/account/version/{version}/do/read
-     * 
+     *
      * required: user_key, api_key
      */
-    public function read():? stdClass
+    public function read():? \stdClass
     {
         return $this->setOperator('read')->request($this->object);
     }

@@ -15,7 +15,7 @@ use CyberDuck\PardotApi\Validator\StringValidator;
 
 /**
  * Visitors object representation
- * 
+ *
  * @category   PardotApi
  * @package    PardotApi
  * @author     Andrew Mc Cormack <andy@cyber-duck.co.uk>
@@ -53,7 +53,7 @@ class VisitorsQuery extends Query implements QueryObject
             'only_identified' => new BooleanValidator,
             'prospect_ids'    => new PositiveIntListValidator
         ];
-    } 
+    }
 
     /**
      * Returns an array of allowed query navigation params and validators for the values
@@ -72,18 +72,18 @@ class VisitorsQuery extends Query implements QueryObject
     }
 
     /**
-     * Assigns or reassigns the visitor specified by <id> to a specified prospect. 
+     * Assigns or reassigns the visitor specified by <id> to a specified prospect.
      * The <prospect_id> parameters must be provided to identify the target prospect.
-     * 
+     *
      * /api/visitor/version/{visitor}/do/assign/id/<id>?...
-     * 
+     *
      * required: user_key, api_key, id, prospect_id
-     * 
+     *
      * @param int $id
      * @param int $prospectId
      * @return stdClass|null
      */
-    public function assign(int $id, int $prospectId):? stdClass
+    public function assign(int $id, int $prospectId):? \stdClass
     {
         return $this->setOperator(sprintf('assign/id/%s', $id))->setData(['prospect_id' => $prospectId])->request($this->object);
     }
