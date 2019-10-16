@@ -154,7 +154,7 @@ $pardot->lifecycleStage()->query([...]); // queries and returns a filtered list
 ### Prospects methods
 
 ```php
-// @todo
+$pardot->prospect()->readByEmail('name@example.com'); // queries an object by email
 ```
 
 ### Tag Objects methods
