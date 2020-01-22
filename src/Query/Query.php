@@ -87,7 +87,7 @@ class Query
      * @param string $object
      * @return Query
      */
-    protected function setObject(string $object): Query
+    public function setObject(string $object): Query
     {
         $this->object = $object;
         return $this;
@@ -99,7 +99,7 @@ class Query
      * @param string $operator
      * @return Query
      */
-    protected function setOperator(string $operator): Query
+    public function setOperator(string $operator): Query
     {
         $this->operator = $operator;
         return $this;
@@ -111,7 +111,7 @@ class Query
      * @param array $data
      * @return Query
      */
-    protected function setData(array $data): Query
+    public function setData(array $data): Query
     {
         $this->data = $data;
         return $this;
@@ -130,7 +130,7 @@ class Query
      * @return mixed
      * @throws Exception
      */
-    protected function request(string $property)
+    public function request(string $property)
     {
         if(!$this->api->getAuthenticator()->isAuthenticated()) {
             $this->api->getAuthenticator()->doAuthentication();
