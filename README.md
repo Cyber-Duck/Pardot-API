@@ -154,7 +154,8 @@ $pardot->lifecycleStage()->query([...]); // queries and returns a filtered list
 ### Prospects methods
 
 ```php
-// @todo
+$pardot->prospect()->query([...]); // queries and returns a filtered list
+$pardot->prospect()->read(1); // queries an object by ID
 ```
 
 ### Tag Objects methods
