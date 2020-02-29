@@ -83,4 +83,19 @@ class ProspectsQuery extends Query implements QueryObject
             'sort_order' => new SortOrderValidator
         ];
     }
+    
+    /**
+     * Sends the request to retrieve the prospect object by email and returns it from the API
+     * 
+     * /api/prospect/version/{version}/do/read/email/<email>?...
+     * 
+     * required: user_key, api_key, email
+     * 
+     * @param int $id
+     * @return stdClass|null
+     */
+    public function readByEmail(string $email)
+    {
+        return $this->setOperator(sprintf('read/email/%s', $email))->request($this->object);
+    }
 }
