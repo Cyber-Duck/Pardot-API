@@ -12,11 +12,13 @@ Author: [Andrew Mc Cormack](https://github.com/Andrew-Mc-Cormack)
 
 A library to integrate with the Pardot API through PHP objects
 
-This library simplifies the process of authentication and querying the Pardot API and provides access to all of the v4 API features.
+This library simplifies the process of authentication and querying the Pardot API and provides access to all of the v4 API features. 
+
+Latest Version 2.0.0 supports Salesforce SSO authentication.
 
 ### Setup
 
-To initalise the Pardot API object pass your user email, password, and user key credentials.
+To initalise the Pardot API object pass your user email, password, client id, client secret and business unit id credentials.
 Any subsequent request to fetch data from the API will automatically perform the authentication actions before trying to fetch data.
 
 ```php
@@ -25,7 +27,9 @@ use CyberDuck\PardotApi\PardotApi;
 $pardot = new PardotApi(
     'EMAIL',
     'PASSWORD',
-    'USER_KEY'
+    'CLIENT_ID',
+    'CLIENT_SECRET',
+    'BUSINESS_UNIT_ID',
 );
 ```
 
