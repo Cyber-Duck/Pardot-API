@@ -22,7 +22,7 @@ To initalise the Pardot API object pass your user email, password, client id, cl
 Any subsequent request to fetch data from the API will automatically perform the authentication actions before trying to fetch data.
 
 ```php
-use CyberDuck\PardotApi\PardotApi;
+use CyberDuck\Pardot\PardotApi;
 
 $pardot = new PardotApi(
     'EMAIL',
