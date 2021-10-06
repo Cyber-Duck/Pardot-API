@@ -6,7 +6,7 @@ use CyberDuck\PardotApi\Traits\CanRead;
 
 /**
  * Email Query object representation
- * 
+ *
  * @category   PardotApi
  * @package    PardotApi
  * @author     Andrew Mc Cormack <andy@cyber-duck.co.uk>
@@ -30,9 +30,9 @@ class EmailQuery extends Query
     /**
      * Returns the statistical data for the list email specified by <list_email_id>.
      * <list_email_id> is the Pardot ID of the target email.
-     * 
+     *
      * /api/email/version/{version}/do/stats/id/<list_email_id>?...
-     * 
+     *
      * required: user_key, api_key, list_email_id
      *
      * @return stClass|null
@@ -44,9 +44,9 @@ class EmailQuery extends Query
 
     /**
      * Sends a one-to-one email to the prospect identified by <prospect_id>
-     * 
+     *
      * /api/email/version/3/do/send/prospect_id/<prospect_id>?...
-     * 
+     *
      * required: user_key, api_key, campaign_id, (email_template_id OR (text_content, name, subject, & ((from_email & from_name) OR from_user_id)))
      *
      * @param integer $id
@@ -61,9 +61,9 @@ class EmailQuery extends Query
 
     /**
      * Sends a one-to-one email to the prospect identified by <prospect_email>
-     * 
+     *
      * /api/email/version/3/do/send/prospect_email/<prospect_email>?...
-     * 
+     *
      * required: user_key, api_key, campaign_id, (email_template_id OR (text_content, name, subject, & ((from_email & from_name) OR from_user_id)))
      *
      * @param string $email
@@ -71,16 +71,19 @@ class EmailQuery extends Query
      * @return stClass|null
      * @todo validate passed params
      */
-    public function sendToEmail(string $email, array $params):? stClass
+    public function sendToEmail(string $email, array $params):? \stdClass
     {
-        return $this->setOperator(sprintf('send/prospect_email/%s', $id))->request('email');
+        return $this
+            ->setOperator(sprintf('send/prospect_email/%s', $email))
+            ->setData($params)
+            ->request('email');
     }
 
     /**
      * Sends an email to all the prospects in a list identified by list_ids[]
-     * 
+     *
      * /api/email/version/4/do/send
-     * 
+     *
      * required: user_key, api_key, list_ids[], campaign_id, (email_template_id OR (text_content, name, subject, & ((from_email & from_name) OR from_user_id)))
      *
      * @param string $email

@@ -32,13 +32,13 @@ use CyberDuck\PardotApi\Query\VisitsQuery;
 
 /**
  * PHP Wrapper for the pardot API
- * 
+ *
  * API access methods return object representations on the Pardot API object
  * / operator endpoints
- * 
+ *
  * Methods and objects that this class depend on can be easily over-ridden to
  * future proof this package against API updates
- * 
+ *
  * @category   PardotApi
  * @package    PardotApi
  * @author     Andrew Mc Cormack <andy@cyber-duck.co.uk>
@@ -57,7 +57,7 @@ class PardotApi implements PardotApiInterface
      * @var int
      */
     protected $version = 4;
-    
+
     /**
      * API authenticator instance
      *
@@ -137,7 +137,7 @@ class PardotApi implements PardotApiInterface
         'visitor'            => VisitorsQuery::class,
         'visit'              => VisitsQuery::class,
     ];
-    
+
     /**
      * Sets the PardotAuthenticator instance with the passed credentials and
      * sets the API version
@@ -147,10 +147,20 @@ class PardotApi implements PardotApiInterface
      * @param string $userKey
      * @param integer $version
      */
-    public function __construct(string $email, string $password, string $userKey, int $version = 4)
+
+    /**
+     * PardotApi constructor.
+     * @param string $email
+     * @param string $password
+     * @param string $clientID
+     * @param string $clientSecret
+     * @param string $businessUnitID
+     * @param int|int $version
+     */
+    public function __construct(string $email, string $password, string $clientID, string $clientSecret, string $businessUnitID, int $version = 4)
     {
         $this->authenticator = new PardotAuthenticator(
-            $this, $email, $password, $userKey
+            $this, $email, $password, $clientID, $clientSecret, $businessUnitID
         );
         $this->version = $version;
     }
@@ -282,7 +292,7 @@ class PardotApi implements PardotApiInterface
             return $this->signatures[$name]::obj($this);
         }
     }
-    
+
     /**
      * Performs a query request against any API endpoint
      *
