@@ -10,6 +10,7 @@ use CyberDuck\PardotApi\Validator\FixedValuesValidator;
 use CyberDuck\PardotApi\Validator\PositiveIntValidator;
 use CyberDuck\PardotApi\Validator\SortOrderValidator;
 use CyberDuck\PardotApi\Validator\StringValidator;
+use CyberDuck\PardotApi\Validator\ArrayValidator;
 
 /**
  * Forms object representation
