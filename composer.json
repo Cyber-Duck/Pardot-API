@@ -20,7 +20,7 @@
         "installer-name": "pardot-api"
     },
     "require": {
-        "guzzlehttp/guzzle": "6.3.* - 7.*"
+        "guzzlehttp/guzzle": "7.*"
     },
     "autoload": {
         "classmap": [
