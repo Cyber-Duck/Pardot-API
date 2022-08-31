@@ -1,7 +1,7 @@
 {
-    "name": "cyber-duck/pardot-api",
+    "name": "capturehighered/pardot-api",
     "description": "PHP package to interact with the Pardot API",
-    "homepage": "https://github.com/cyber-duck/pardot-api",
+    "homepage": "https://github.com/capturehighered/pardot-api",
     "keywords": [
         "php",
         "pardot"
@@ -20,7 +20,7 @@
         "installer-name": "pardot-api"
     },
     "require": {
-        "guzzlehttp/guzzle": "6.3.*"
+        "guzzlehttp/guzzle": "6.3.* - 7.*"
     },
     "autoload": {
         "classmap": [
