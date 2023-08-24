@@ -1,12 +1,13 @@
 <?php
 require_once ('PardotOAuth.php');
 
+$code = isset($_GET['code']) ? $_GET['code'] : '';
 $html = '<form>
 <label>client_id</label>
 <input type="text" name="client_id"><br>
 <label>client_secret</label>
 <input type="text" name="client_secret"><br>
-<input type="hidden" name="code" value="' . $_GET['code'] . '">
+<input type="hidden" name="code" value="' . $code . '">
 <input type="submit" value="Submit">
 </form>';
 
@@ -27,7 +28,7 @@ if ($oAuth === null) {
     return;
 }
 
-if(isset($_GET['code']))
+if(isset($_GET['code']) && $_GET['code'] !== '')
 {
     $html = $oAuth->getAccessToken($_GET['code']);
 }
