@@ -137,20 +137,29 @@ class PardotApi implements PardotApiInterface
         'visitor'            => VisitorsQuery::class,
         'visit'              => VisitsQuery::class,
     ];
-    
+
     /**
      * Sets the PardotAuthenticator instance with the passed credentials and
      * sets the API version
      *
-     * @param string $email
-     * @param string $password
-     * @param string $userKey
+     * @param string $clientId
+     * @param string $clientSecret
+     * @param string $redirectUri
+     * @param string $businessUnitId
+     * @param string $absPathAccessTokenStorage
      * @param integer $version
      */
-    public function __construct(string $email, string $password, string $userKey, int $version = 4)
+    public function __construct(
+        string $clientId,
+        string $clientSecret,
+        string $redirectUri,
+        string $businessUnitId,
+        string $absPathAccessTokenStorage,
+        int $version = 4
+    )
     {
         $this->authenticator = new PardotAuthenticator(
-            $this, $email, $password, $userKey
+            $this, $clientId, $clientSecret, $redirectUri, $businessUnitId, $absPathAccessTokenStorage
         );
         $this->version = $version;
     }

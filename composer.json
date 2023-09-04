@@ -11,6 +11,10 @@
         {
             "name": "Andrew Mc Cormack",
             "email": "andy@cyber-duck.co.uk"
+        },
+        {
+            "name": "Andreas Sommer",
+            "email": "sommer@belsignum.com"
         }
     ],
     "support": {
@@ -20,7 +24,8 @@
         "installer-name": "pardot-api"
     },
     "require": {
-        "guzzlehttp/guzzle": "*"
+        "guzzlehttp/guzzle": "*",
+        "stevenmaguire/oauth2-salesforce": "^2.0"
     },
     "autoload": {
         "classmap": [

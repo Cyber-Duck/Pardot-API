@@ -2,222 +2,130 @@
 
 namespace CyberDuck\Pardot;
 
-use CyberDuck\PardotApi\Contract\PardotApi;
+use CyberDuck\Pardot\Exception\InvalidPardotConfigurationException;
+use Stevenmaguire\OAuth2\Client\Provider\Salesforce;
+use Stevenmaguire\OAuth2\Client\Token\AccessToken;
 use CyberDuck\PardotApi\Contract\PardotAuthenticator as PardotAuthenticatorInterface;
-use Exception;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
-use stdClass;
 
-/**
- * Pardot API Authenticator
- * 
- * Sends an authentication request to the Pardot API to get an API key to use
- * in query requests
- * 
- * @category   PardotApi
- * @package    PardotApi
- * @author     Andrew Mc Cormack <andy@cyber-duck.co.uk>
- * @copyright  Copyright (c) 2018, Andrew Mc Cormack
- * @license    https://github.com/cyber-duck/pardot-api/license
- * @version    1.0.0
- * @link       https://github.com/cyber-duck/pardot-api
- * @since      1.0.0
- */
 class PardotAuthenticator implements PardotAuthenticatorInterface
 {
-    /**
-     * Main API class instance
-     *
-     * @var PardotApi
-     */
-    protected $api;
+    protected PardotApi $api;
+    protected AccessToken $accessToken;
+    protected bool $freshAccessToken = false;
+    protected string $clientId;
+    protected string $clientSecret;
+    protected string $redirectUri;
+    protected string $businessUnitId;
+    protected string $accessTokenStorage;
 
-    /**
-     * Auth user email credential
-     *
-     * @var string
-     */
-    protected $email;
-
-    /**
-     * Auth user password credential
-     *
-     * @var string
-     */
-    protected $password;
-
-    /**
-     * Auth user key credential
-     *
-     * @var string
-     */
-    protected $userKey;
-
-    /**
-     * Returned request API key
-     *
-     * @var string
-     */
-    protected $apiKey;
-
-    /**
-     * Login endpoint
-     *
-     * @var string
-     */
-    protected $endpoint = 'https://pi.pardot.com/api/login/version/%s/';
-
-    /**
-     * Returns response 
-     *
-     * @var Response|null
-     */
-    protected $response;
-
-    /**
-     * Flag to indicate the authentication request has been sent
-     *
-     * @var boolean
-     */
-    protected $authenticated = false;
-
-    /**
-     * Flag to indicate the authentication request has been successful
-     *
-     * @var boolean
-     */
-    protected $success = false;
-
-    /**
-     * Sets the required APi credentials and request client instance
-     *
-     * @param PardotApi $api
-     * @param string $email
-     * @param string $password
-     * @param string $userKey
-     */
-    public function __construct(PardotApi $api, string $email, string $password, string $userKey)
+    public function __construct(
+        PardotApi $api,
+        string    $clientId,
+        string    $clientSecret,
+        string    $redirectUri,
+        string    $businessUnitId,
+        string    $absPathAccessTokenStorage
+    )
     {
         $this->api = $api;
-        $this->email = $email;
-        $this->password = $password;
-        $this->userKey = $userKey;
 
-        $this->client = new Client();
+        $this->accessTokenStorage = $absPathAccessTokenStorage;
+        if (($accessTokenStorage = $this->getApiDataFromAccessTokenStorage()) === null)
+        {
+            throw new InvalidPardotConfigurationException('No valid Pardot configuration found!', 1693657457);
+        }
+
+        $this->clientId = $clientId;
+        $this->clientSecret = $clientSecret;
+        $this->redirectUri = $redirectUri;
+        $this->businessUnitId = $businessUnitId;
+        $this->accessToken = new AccessToken($accessTokenStorage);
     }
 
     /**
-     * Returns the user credential key for use in query requests
-     *
-     * @return string
+     * Salesforce suggests to only refresh the Access Token when API returns it is expired
+     * @return void
      */
-    public function getUserKey(): string
+    public function refreshAccessToken(): void
     {
-        return $this->userKey;
-    }
+        try
+        {
+            $provider = new Salesforce([
+                'clientId' => $this->clientId,
+                'clientSecret' => $this->clientSecret,
+                'redirectUri' => $this->redirectUri
+            ]);
 
-    /**
-     * Performs the login authentication request to return and set the API key 
-     *
-     * @return static
-     * @throws Exception
-     */
-    public function doAuthentication()
-    {
-        try {
-            $this->authenticated = true;
+            $newAccessToken = $provider->getAccessToken('refresh_token', [
+                'refresh_token' => $this->accessToken->getRefreshToken()
+            ]);
 
-            $this->response = $this->client->request('POST', 
-                $this->getLoginRequestEndpoint(),
-                $this->getLoginRequestOptions()
-            );
-            if($this->response->getStatusCode() !== 200) {
-                throw new Exception('Pardot API error: 200 response not returned');
+            // store refresh token when not provided
+            if (!$newAccessToken->getRefreshToken())
+            {
+                $options = $newAccessToken->jsonSerialize();
+                $options['refresh_token'] = $this->accessToken->getRefreshToken();
+                $newAccessToken = new \Stevenmaguire\OAuth2\Client\Token\AccessToken($options);
             }
-            $namespace = $this->api->getFormatter();
-            $formatter = new $namespace((string) $this->response->getBody(), 'api_key');
-            
-            $this->success = true;
-            $this->apiKey = $formatter->getData()->api_key;
-        } catch(Exception $e) {
-            if($this->api->getDebug() === true) {
+
+            $this->accessToken = $newAccessToken;
+            $this->writeApiDatatoConfigFile();
+            $this->freshAccessToken = true;
+        }
+        catch (\Exception $e)
+        {
+            if ($this->api->getDebug() === true)
+            {
                 echo $e->getMessage();
                 die;
             }
         }
-        return $this;
     }
 
-    /**
-     * Returns the Response object or null on failure
-     *
-     * @return Response|null
-     */
-    public function getResponse():? Response
+    public function accessTokenStorageSerialize(): array
     {
-        return $this->response;
+        return $this->accessToken->jsonSerialize();
     }
 
-    /**
-     * Returns whether the login authentication request has been attempted
-     *
-     * @return boolean
-     */
-    public function isAuthenticated(): bool
+    private function getApiDataFromAccessTokenStorage(): ?array
     {
-        return $this->authenticated;
+        $content = file_get_contents($this->accessTokenStorage);
+        return json_decode($content, true);
     }
 
-    /**
-     * Returns whether the login authentication request has been successful
-     *
-     * @return boolean
-     */
-    public function isAuthenticatedSuccessfully(): bool
+    private function writeApiDatatoConfigFile(): void
     {
-        return $this->success;
+        $accessTokenStorage = fopen($this->accessTokenStorage, 'w') or die('Unable to read file');
+        fwrite($accessTokenStorage, json_encode($this->accessTokenStorageSerialize()));
+        fclose($accessTokenStorage);
     }
 
     /**
-     * Returns the API key returned from the login request for use in query requests
-     *
-     * @return string|null
-     */
-    public function getApiKey():? string
-    {
-        return $this->apiKey;
-    }
-
-    /**
-     * Returns the login request endpoint URL
+     * Returns the Access Token returned from the login request for use in query requests
      *
      * @return string
      */
-    private function getLoginRequestEndpoint(): string
+    public function getAccessToken(): string
     {
-        return sprintf(
-            $this->endpoint,
-            $this->api->getVersion()
-        );
+        return $this->accessToken->getToken();
     }
 
     /**
-     * Returns the login request additional options
+     * Returns the Business Unit ID for use in query requests
      *
-     * @return array
+     * @return string
      */
-    private function getLoginRequestOptions(): array
+    public function getBusinessUnitId(): string
     {
-        return [
-            'form_params' => [
-                'email'    => $this->email,
-                'password' => $this->password,
-                'user_key' => $this->userKey,
-                'format'   => $this->api->getFormat(),
-                'output'   => $this->api->getOutput()
-            ]
-        ];
+        return $this->businessUnitId;
+    }
+
+    /**
+     * Returns whether the access token is fetched by refresh access token
+     * @return bool
+     */
+    public function isFreshAccessToken(): bool
+    {
+        return $this->freshAccessToken;
     }
 }
