@@ -29,7 +29,7 @@ class PardotOAuth
             'response_type' => 'code',
             'client_id' => $this->client_id,
             'redirect_uri' => $this->redirect_uri,
-            'scope' => 'pardot_api'
+            'scope' => ''
         ];
         $query = http_build_query($data);
         return sprintf('%s?%s', $this->authorize_uri, $query);
